@@ -117,10 +117,10 @@ def evaluate_company_performance(
     mom_score = 12.0
     if price > sma_50:
         mom_score += 6.0
-        strengths.append(f"Bullish Trend Structure: Price (${price:.2f}) is trading comfortably above its 50-day moving average (${sma_50:.2f}).")
+        strengths.append(f"Bullish Trend Structure: Price (\\${price:.2f}) is trading comfortably above its 50-day moving average (\\${sma_50:.2f}).")
     else:
         mom_score -= 3.0
-        risks.append(f"Technical Resistance: Price (${price:.2f}) trades below its 50-day trendline (${sma_50:.2f}), suggesting intermediate consolidation.")
+        risks.append(f"Technical Resistance: Price (\\${price:.2f}) trades below its 50-day trendline (\\${sma_50:.2f}), suggesting intermediate consolidation.")
 
     if 40.0 <= rsi <= 65.0:
         mom_score += 4.0
@@ -166,7 +166,7 @@ def evaluate_company_performance(
     margin_text = f"net margin of {margin_net:.1f}%" if margin_net else "operating metrics"
 
     summary_text = (
-        f"{name} ({ticker}) currently trades at ${price:.2f} within the {industry} sector. "
+        f"{name} ({ticker}) currently trades at \\${price:.2f} within the {industry} sector. "
         f"Fundamentally, the company showcases a {pe_text} alongside an {roe_text} and a {margin_text}. "
         f"Its position in the 52-week corridor is at {pos_52:.1f}% with an RSI momentum index of {rsi:.1f}. "
         f"Overall, our multi-factor model assigns a score of {composite_score:.1f}/100 with a '{rating}' stance, "
