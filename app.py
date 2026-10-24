@@ -186,9 +186,15 @@ with st.sidebar.expander("ℹ️ About This Application"):
     )
 
 # Main Application Logic
-if not ticker_input:
-    st.warning("Please enter a valid stock ticker symbol in the sidebar.")
+import re
+
+# Clean and validate ticker format (allow letters, numbers, dot, and dash for symbols like BRK.B)
+cleaned_ticker = re.sub(r"[^A-Z0-9\.\-]", "", ticker_input.upper().strip())
+if not cleaned_ticker or not re.match(r"^[A-Z0-9\.\-]{1,10}$", cleaned_ticker):
+    st.warning("⚠️ Please enter a valid stock ticker symbol containing only letters and standard delimiters (e.g., AAPL, MSFT, BRK.B).")
     st.stop()
+
+ticker_input = cleaned_ticker
 
 with st.spinner(f"Retrieving financial data and calculating metrics for {ticker_input}..."):
     stock_pkg = client.get_complete_stock_data(ticker_input)

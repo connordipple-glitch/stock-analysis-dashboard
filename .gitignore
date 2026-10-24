@@ -32,9 +32,16 @@ ENV/
 
 # Streamlit local settings & secrets
 .streamlit/secrets.toml
+secrets.toml
+*.secret
 
-# Environment variables
+# Environment variables & keys
 .env
+.env.*
+!.env.example
+*.key
+*.pem
+*.token
 
 # IDE & OS files
 .vscode/
